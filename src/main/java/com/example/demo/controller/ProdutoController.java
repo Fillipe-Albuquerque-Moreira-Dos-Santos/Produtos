@@ -5,8 +5,15 @@ import com.example.demo.entities.Produto;
 import com.example.demo.model.ProdutoDTO;
 import com.example.demo.repository.ProdutoRepository;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Slf4j
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/produtos")
@@ -28,10 +35,30 @@ public class ProdutoController {
         return produtoMapper.toDTO(produto);
     }
 
-    @DeleteMapping("/deletar/{id}")
-    public void deletar(@PathVariable Long id) {
-        produtoRepository.deleteById(id);
+    @GetMapping("/listar")
+    public ResponseEntity<List<ProdutoDTO>> listarTodos() {
+        List<Produto> produtos = produtoRepository.findAll();
+
+        if (produtos.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+
+        List<ProdutoDTO> produtoDTOs = produtos.stream().map(produtoMapper::toDTO).collect(Collectors.toList());
+
+        return ResponseEntity.ok(produtoDTOs);
     }
+
+
+    @DeleteMapping("/deletar/{id}")
+    public ResponseEntity<String> deletar(@PathVariable Long id) {
+        if (produtoRepository.existsById(id)) {
+            produtoRepository.deleteById(id);
+            return ResponseEntity.ok("Produto deletado com sucesso!");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Produto não encontrado!");
+        }
+    }
+
 
     @PutMapping("/atualizar/{id}")
     public ProdutoDTO atualizar(@PathVariable Long id, @RequestBody ProdutoDTO produtoDTO) {
