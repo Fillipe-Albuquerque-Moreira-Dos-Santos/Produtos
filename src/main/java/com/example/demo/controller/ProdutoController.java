@@ -35,19 +35,11 @@ public class ProdutoController {
         return produtoMapper.toDTO(produto);
     }
 
-    @GetMapping("/listar")
-    public ResponseEntity<List<ProdutoDTO>> listarTodos() {
+    @GetMapping("/listarTodos")
+    public ResponseEntity listarTodos () {
         List<Produto> produtos = produtoRepository.findAll();
-
-        if (produtos.isEmpty()) {
-            return ResponseEntity.noContent().build();
-        }
-
-        List<ProdutoDTO> produtoDTOs = produtos.stream().map(produtoMapper::toDTO).collect(Collectors.toList());
-
-        return ResponseEntity.ok(produtoDTOs);
+        return ResponseEntity.ok(produtos);
     }
-
 
     @DeleteMapping("/deletar/{id}")
     public ResponseEntity<String> deletar(@PathVariable Long id) {
