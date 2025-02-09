@@ -12,7 +12,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @Slf4j
@@ -76,7 +75,7 @@ public class ProdutoController {
             @ApiResponse(responseCode = "404", description = "Produto não encontrado")
     })
     @PutMapping("/atualizar/{id}")
-    public ProdutoDTO atualizar(@PathVariable Long id, @RequestBody ProdutoDTO produtoDTO) {
+    public ProdutoDTO atualizar(@RequestBody ProdutoDTO produtoDTO) {
         Produto produto = produtoMapper.toEntity(produtoDTO);
         return produtoMapper.toDTO(produtoRepository.save(produto));
     }
