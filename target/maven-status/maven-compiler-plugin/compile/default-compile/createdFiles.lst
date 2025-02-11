@@ -1,0 +1,7 @@
+com/example/demo/Application.class
+com/example/demo/repository/ProdutoRepository.class
+com/example/demo/ProdutoMapper/ProdutoMapperImpl.class
+com/example/demo/ProdutoMapper/ProdutoMapper.class
+com/example/demo/model/ProdutoDTO.class
+com/example/demo/entities/Produto.class
+com/example/demo/controller/ProdutoController.class

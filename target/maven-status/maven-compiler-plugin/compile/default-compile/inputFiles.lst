@@ -1,0 +1,7 @@
+/home/fillipe/dev/Produtos/src/main/java/com/example/demo/Application.java
+/home/fillipe/dev/Produtos/src/main/java/com/example/demo/ProdutoMapper/ProdutoMapper.java
+/home/fillipe/dev/Produtos/src/main/java/com/example/demo/ProdutoMapper/ProdutoMapperImpl.java
+/home/fillipe/dev/Produtos/src/main/java/com/example/demo/controller/ProdutoController.java
+/home/fillipe/dev/Produtos/src/main/java/com/example/demo/entities/Produto.java
+/home/fillipe/dev/Produtos/src/main/java/com/example/demo/model/ProdutoDTO.java
+/home/fillipe/dev/Produtos/src/main/java/com/example/demo/repository/ProdutoRepository.java
