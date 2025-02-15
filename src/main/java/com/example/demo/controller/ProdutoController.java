@@ -17,6 +17,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200") // Permite requisições do frontend Angular
 @RequestMapping("/api/produtos")
 public class ProdutoController {
 
